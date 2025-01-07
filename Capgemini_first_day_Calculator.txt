@@ -1,0 +1,93 @@
+
+
+
+
+//addition 
+public class Addition {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+
+//subtraction 
+
+public class Subtraction {
+    public static int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+//multiplication 
+public class Multiplication {
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+}
+
+//divi 
+
+public class Division {
+    public static double divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return (double) a / b;
+    }
+}
+
+//modulo 
+
+public class Modulo {
+    public static int modulo(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Modulo by zero is not allowed.");
+        }
+        return a % b;
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter first number: ");
+        int a = scanner.nextInt();
+
+        System.out.println("Enter second number: ");
+        int b = scanner.nextInt();
+
+        System.out.println("Choose an operation: add, subtract, multiply, divide, modulo");
+        String operation = scanner.next();
+
+        try {
+            switch (operation.toLowerCase()) {
+                case "add":
+                    System.out.println("Result: " + Addition.add(a, b));
+                    break;
+                case "subtract":
+                    System.out.println("Result: " + Subtraction.subtract(a, b));
+                    break;
+                case "multiply":
+                    System.out.println("Result: " + Multiplication.multiply(a, b));
+                    break;
+                case "divide":
+                    System.out.println("Result: " + Division.divide(a, b));
+                    break;
+                case "modulo":
+                    System.out.println("Result: " + Modulo.modulo(a, b));
+                    break;
+                default:
+                    System.out.println("Invalid operation.");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        scanner.close();
+    }
+}
